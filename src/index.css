@@ -79,6 +79,9 @@
   section.game-status {
     @apply cursor-default flex flex-col items-center justify-center w-full max-w-xs sm:max-w-sm md:max-w-md min-h-[60px] rounded-md my-8 px-3 py-2 text-[var(--color-header)] transition-all duration-300;
   }
+
+  section.game-status > h2 { @apply font-semibold text-xl mb-1}
+
   section.game-status.won {
     @apply bg-[var(--color-won)];
   }

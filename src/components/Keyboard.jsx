@@ -8,6 +8,9 @@ export const Keyboard = (props) => {
 
   const keyboard = keys.split("").map((key) => (
     <button
+
+      disabled={props.isOver}
+
       className={cn(
         !selected.includes(key)
           ? ""
@@ -18,6 +21,7 @@ export const Keyboard = (props) => {
       onClick={() => props.select(key)}
       key={key}
       aria-label={`letter ${key}`}
+      aria-disabled={props.isOver}
     >
       {key.toUpperCase()}
     </button>
