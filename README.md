@@ -1,16 +1,34 @@
-# React + Vite
+# Assembly - Word Guessing Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a word guessing game built with React and Vite. The player selects letters from a keyboard to guess a hidden word. Correct guesses are revealed in the word, and incorrect guesses are tracked. The game shows feedback when the player wins or loses.
 
-Currently, two official plugins are available:
+## Play the Game
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<a href="https://Omar-Aldabbas.github.io/Assembly/" target="_blank" style="display:inline-block; padding:10px 20px; background-color:#54bd95; color:white; text-decoration:none; border-radius:5px; font-weight:bold;">Open Game</a>
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Dynamic word guessing.
+- Correct and incorrect letter highlighting.
+- Visual feedback for winning and losing.
+- Confetti animation on win and loss.
+- Responsive design.
+- "New Game" button to restart the game at any time.
 
-## Expanding the ESLint configuration
+## Technologies
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Vite
+- Tailwind CSS
+- react-confetti
+
+
+## Getting Started
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Omar-Aldabbas/Assembly.git
+cd Assembly
