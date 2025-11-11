@@ -19,50 +19,27 @@
   --animate-shake: shake 0.35s ease-in-out forwards;
 
   @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(-8px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes shake {
-    0%,
-    100% {
-      transform: translateX(0);
-    }
-    20%,
-    60% {
-      transform: translateX(-4px);
-    }
-    40%,
-    80% {
-      transform: translateX(4px);
-    }
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-4px); }
+    40%, 80% { transform: translateX(4px); }
   }
 }
 
 @layer base {
-  :root {
-    color-scheme: dark;
-  }
+  :root { color-scheme: dark; }
 
   body {
     @apply m-0 p-5 min-h-screen flex flex-col items-center justify-start font-[var(--font-main)] bg-[var(--color-bg)] text-[var(--color-text)] antialiased transition-all duration-300;
   }
 
-   *{
-    @apply box-border;
-  }
+  * { @apply box-border; }
 
-  h1,
-  h2,
-  p {
-    @apply m-0;
-  }
+  h1, h2, p { @apply m-0; }
 }
 
 @layer components {
@@ -77,26 +54,19 @@
   }
 
   section.game-status {
-    @apply cursor-default flex flex-col items-center justify-center w-full max-w-xs sm:max-w-sm md:max-w-md min-h-[60px] rounded-md my-8 px-3 py-2 text-[var(--color-header)] transition-all duration-300;
+    @apply cursor-default flex flex-col items-center justify-center w-full max-w-full sm:max-w-sm md:max-w-md min-h-[60px] rounded-md my-8 px-3 py-2 text-[var(--color-header)] transition-all duration-300 text-center;
   }
+  section.game-status > h2 { @apply font-semibold text-xl mb-1 text-center; }
 
-  section.game-status > h2 { @apply font-semibold text-xl mb-1}
-
-  section.game-status.won {
-    @apply bg-[var(--color-won)];
-  }
-  section.game-status.lost {
-    @apply bg-[var(--color-lost)];
-  }
-  section.game-status.farewell {
-    @apply bg-[var(--color-farewell)] border-2 border-dashed border-gray-800;
-  }
+  section.game-status.won { @apply bg-[var(--color-won)]; }
+  section.game-status.lost { @apply bg-[var(--color-lost)]; }
+  section.game-status.farewell { @apply bg-[var(--color-farewell)] border-2 border-dashed border-gray-800; }
 
   section.language-chips {
-    @apply flex flex-wrap gap-2 justify-center max-w-xs sm:max-w-sm md:max-w-md mb-9;
+    @apply flex flex-wrap justify-center items-center gap-2 w-full max-w-full sm:max-w-sm md:max-w-md mb-9;
   }
   span.chip {
-    @apply relative rounded-[var(--radius-sm)] px-2 py-2 transition-transform duration-300 hover:scale-105;
+    @apply relative rounded-[var(--radius-sm)] px-2 py-2 transition-transform duration-300 hover:scale-105 text-center;
   }
   span.chip.lost::before {
     content: "💀";
@@ -104,30 +74,24 @@
   }
 
   section.word {
-    @apply flex justify-center gap-1 sm:gap-2 mb-5;
+    @apply flex flex-wrap justify-center items-center gap-1 sm:gap-2 mb-5 overflow-x-auto;
   }
   section.word > span {
-    @apply cursor-default w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex justify-center items-center text-base sm:text-lg md:text-xl bg-gray-800 border-b border-[var(--color-header)] transition-all duration-300;
+    @apply flex-shrink-0 cursor-default w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex justify-center items-center text-base sm:text-lg md:text-xl bg-gray-800 border-b border-[var(--color-header)] transition-all duration-300;
   }
   section.word > span.missed-letter {
     @apply text-[var(--color-wrong)] animate-[var(--animate-shake)];
   }
 
   section.keyboard {
-    @apply flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 max-w-[450px] mb-9;
+    @apply flex flex-wrap justify-center items-center gap-2 sm:gap-3 md:gap-4 max-w-[450px] mb-9;
   }
   section.keyboard > button {
     @apply w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-[var(--radius-sm)] bg-[var(--color-accent)] border border-gray-400 cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 text-black/75 font-semibold;
   }
-  section.keyboard > button.correct {
-    @apply bg-[var(--color-correct)] animate-bounce;
-  }
-  section.keyboard > button.wrong {
-    @apply bg-[var(--color-wrong)] animate-[var(--animate-shake)];
-  }
-  section.keyboard > button:disabled {
-    @apply opacity-50 cursor-not-allowed;
-  }
+  section.keyboard > button.correct { @apply bg-[var(--color-correct)] animate-bounce; }
+  section.keyboard > button.wrong { @apply bg-[var(--color-wrong)] animate-[var(--animate-shake)]; }
+  section.keyboard > button:disabled { @apply opacity-50 cursor-not-allowed; }
 
   button.new-game {
     @apply w-56 sm:w-60 h-10 sm:h-12 bg-blue-500 text-white rounded-md border border-gray-400 px-4 py-2 mx-auto block cursor-pointer font-semibold text-lg sm:text-xl transition-all duration-300 hover:scale-105 hover:shadow-lg;

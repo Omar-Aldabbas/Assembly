@@ -5,9 +5,7 @@ This is a word guessing game built with React and Vite. The player selects lette
 ## Play the Game
 
 <a href="https://Omar-Aldabbas.github.io/Assembly/" target="_blank" 
-   style="display:inline-block; padding:12px 28px; background-color:#2d8f6f; color:white; text-decoration:none; border-radius:8px; font-weight:bold; font-size:1rem; text-align:center; transition: background-color 0.3s ease;"
-   onmouseover="this.style.backgroundColor='#25936d'"
-   onmouseout="this.style.backgroundColor='#2d8f6f'">
+   style="display:inline-block; padding:12px 28px; background-color:#2d8f6f; color:white; text-decoration:none; border-radius:8px; font-weight:bold; font-size:1rem; text-align:center;">
    Open Game
 </a>
 
