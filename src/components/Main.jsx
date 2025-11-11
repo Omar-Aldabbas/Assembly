@@ -5,15 +5,39 @@ import { Word } from "./Word";
 import { Keyboard } from "./Keyboard";
 
 export const Main = () => {
-  const [currentWord, setCurrentWord] = useState("REACT");
+  const [currentWord, setCurrentWord] = useState("react");
   const [selected, setSelected] = useState([]);
 
-// now user select great now we need to know does they select the correct key or not
-// so if currentword letters are the selected letter
+//  this is the simple way but we need to conditionaly took only pos value 
+//   const wrongGuessesCount = selected.length - currentWord.length 
+
+ const wrongGuessesCount = selected.filter(letter => !currentWord.includes(letter)).length
+
+ console.log(wrongGuessesCount)
+
+  const handleGuesses = () => {
+    const upperWord = currentWord.split("");
+
+    return selected
+      .map((letter) => {
+        return upperWord.includes(letter)
+          ? letter
+          : null;
+      })
+      .filter(Boolean);
+  };
+
+  const guessedLetters = handleGuesses();
 
   const letterSection = currentWord
     .split("")
-    .map((letter, i) => <Word key={`${letter}+${i}`} letter={letter} />);
+    .map((letter, i) => (
+      <Word
+        key={`${letter}+${i}`}
+        letter={letter}
+        guessed={guessedLetters.includes(letter)}
+      />
+    ));
 
   const handleSelect = (key) => {
     setSelected((prev) => (prev.includes(key) ? prev : [...prev, key]));
@@ -23,7 +47,7 @@ export const Main = () => {
   return (
     <main>
       <Status />
-      <Chips />
+      <Chips wrongAnswers={wrongGuessesCount}/>
       <section className="word">{letterSection}</section>
       <Keyboard select={handleSelect} selected={selected} word={currentWord} />
     </main>

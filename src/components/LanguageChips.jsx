@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { languages } from "../data/languages";
-export const Chips = () => {
+import { cn } from "../lib/utils";
+export const Chips = ({wrongAnswers}) => {
  
 
   return (
@@ -8,7 +8,7 @@ export const Chips = () => {
       {languages.map((lang, i) => (
         <span
           key={lang +i}
-          className="chip font-semibold cursor-default"
+          className={cn("chip font-semibold cursor-default", wrongAnswers - 1 >= i ? "lost" : "")}
           style={{ backgroundColor: lang.backgroundColor, color: lang.color }}
         >
           {lang.name}
