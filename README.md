@@ -4,7 +4,12 @@ This is a word guessing game built with React and Vite. The player selects lette
 
 ## Play the Game
 
-<a href="https://Omar-Aldabbas.github.io/Assembly/" target="_blank" style="display:inline-block; padding:10px 20px; background-color:#54bd95; color:white; text-decoration:none; border-radius:5px; font-weight:bold;">Open Game</a>
+<a href="https://Omar-Aldabbas.github.io/Assembly/" target="_blank" 
+   style="display:inline-block; padding:12px 28px; background-color:#2d8f6f; color:white; text-decoration:none; border-radius:8px; font-weight:bold; font-size:1rem; text-align:center; transition: background-color 0.3s ease;"
+   onmouseover="this.style.backgroundColor='#25936d'"
+   onmouseout="this.style.backgroundColor='#2d8f6f'">
+   Open Game
+</a>
 
 ## Features
 
