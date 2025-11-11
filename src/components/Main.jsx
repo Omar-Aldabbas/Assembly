@@ -1,16 +1,18 @@
 import { useState } from "react";
+import { useWindowSize } from "react-use";
 import { Chips } from "./LanguageChips";
 import { Status } from "./Status";
 import { Word } from "./Word";
 import { Keyboard } from "./Keyboard";
 import { languages } from "../data/languages";
 import { getFarewellText, getRandomWord } from "../lib/utils";
+import Confetti from "react-confetti";
 
 export const Main = () => {
   const [currentWord, setCurrentWord] = useState(() => getRandomWord());
   const [selected, setSelected] = useState([]);
+  const { width, height } = useWindowSize();
 
-  //   derived data
   const wrongGuessesCount = selected.filter(
     (letter) => !currentWord.includes(letter)
   ).length;
@@ -24,9 +26,7 @@ export const Main = () => {
   const lastGuessedLetter = selected[selected.length - 1];
   const isLastGuessIncorrect =
     selected.length > 0 && !currentWord.includes(lastGuessedLetter);
-  console.log(isLastGuessIncorrect);
 
-  // helper
   const handleGuesses = () => {
     const upperWord = currentWord.split("");
 
@@ -39,7 +39,6 @@ export const Main = () => {
 
   const guessedLetters = handleGuesses();
 
-  // Render
   const letterSection = currentWord
     .split("")
     .map((letter, i) => (
@@ -59,8 +58,31 @@ export const Main = () => {
     setCurrentWord(getRandomWord());
     setSelected([]);
   };
+
   return (
-    <main>
+    <main className="relative overflow-hidden">
+      {isGameWon && (
+        <div className="fixed top-0 left-0 w-screen h-screen pointer-events-none z-50">
+          <Confetti
+            width={width}
+            height={height}
+            numberOfPieces={1000}
+            recycle={false}
+          />
+        </div>
+      )}
+      {isGameLost && (
+        <div className="fixed top-0 left-0 w-screen h-screen pointer-events-none z-50">
+          <Confetti
+            width={width}
+            height={height}
+            recycle={false}
+            numberOfPieces={1000}
+            gravity={0.8}
+            colors={["#444", "#666", "#222"]}
+          />
+        </div>
+      )}
       <Status
         won={isGameWon}
         lost={isGameLost}
@@ -94,7 +116,11 @@ export const Main = () => {
         word={currentWord}
         isOver={isGameOver}
       />
-      {isGameOver && <button className="new-game" onClick={handleReset}>New Game</button>}
+      {isGameOver && (
+        <button className="new-game" onClick={handleReset}>
+          New Game
+        </button>
+      )}
     </main>
   );
 };
